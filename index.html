@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MANZ OFFICIAL - List Produk & Harga</title>
+    <title>MANZ OFFICIAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -12,12 +14,13 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(45deg, #8B4513, #DAA520, #FFD700, #B8860B, #FF8C00);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a0033 25%, #330066 50%, #1a0033 75%, #0c0c0c 100%);
             background-size: 400% 400%;
-            animation: gradientShift 8s ease infinite;
-            min-height: 100vh;
+            animation: gradientShift 15s ease infinite;
             color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
 
         @keyframes gradientShift {
@@ -26,263 +29,423 @@
             100% { background-position: 0% 50%; }
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid #00ff88;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-            background: rgba(0,0,0,0.8);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px);
+        .navbar {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
         }
 
         .logo {
-            font-size: 4rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #FFD700, #FF8C00, #DAA520);
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00ff88, #ff00ff, #00bfff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(255,215,0,0.8);
-            margin-bottom: 10px;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700, 0 0 40px #FFD700; }
-            to { text-shadow: 0 0 30px #FF8C00, 0 0 40px #FF8C00, 0 0 50px #FF8C00; }
-        }
-
-        .tagline {
-            font-size: 1.5rem;
-            opacity: 0.9;
-            margin-bottom: 10px;
-        }
-
-        .info-text {
-            background: linear-gradient(45deg, #FFD700, #FF8C00);
-            color: #000;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            display: inline-block;
-            animation: pulse 2s infinite;
-            box-shadow: 0 5px 20px rgba(255,215,0,0.6);
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
         }
 
         .order-btn {
-            display: inline-block;
-            background: linear-gradient(45deg, #FFD700, #FFA500);
+            background: linear-gradient(45deg, #ff00ff, #00ff88);
             color: #000;
-            padding: 15px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-top: 20px;
-            box-shadow: 0 10px 30px rgba(255,215,0,0.6);
+            padding: 10px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 0, 255, 0.4);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .order-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255,215,0,0.8);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255, 0, 255, 0.6);
         }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 120px 1.5rem 2rem;
         }
 
-        .product-card {
-            background: rgba(0,0,0,0.9);
-            border-radius: 20px;
-            padding: 30px;
+        .hero {
             text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00ff88, #ff00ff, #00bfff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 40px rgba(0, 255, 136, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .products-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-item {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
             cursor: pointer;
-            transition: all 0.4s ease;
-            border: 2px solid transparent;
             position: relative;
             overflow: hidden;
         }
 
-        .product-card::before {
+        .product-item::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
             transition: left 0.5s;
         }
 
-        .product-card:hover::before {
+        .product-item:hover::before {
             left: 100%;
         }
 
-        .product-card:hover {
-            transform: translateY(-15px) scale(1.05);
-            border-color: #FFD700;
-            box-shadow: 0 25px 50px rgba(255,215,0,0.4);
-            background: rgba(0,0,0,0.95);
+        .product-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 255, 136, 0.3);
+            border-color: #00ff88;
         }
 
         .product-name {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #FFD700;
-            text-shadow: 0 0 10px rgba(255,215,0,0.8);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
         }
 
         .product-price {
-            font-size: 1.1rem;
-            color: #ccc;
-            margin-bottom: 10px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.4s ease;
-            line-height: 1.4;
-        }
-
-        .product-card:hover .product-price {
-            opacity: 1;
-            transform: translateY(0);
-            color: #FFD700;
             font-size: 1.3rem;
-            font-weight: bold;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff00ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .product-desc {
-            font-size: 1rem;
-            line-height: 1.6;
-            opacity: 0.8;
-        }
-
-        .telegram-link {
-            display: block;
-            margin-top: 30px;
+        .footer {
             text-align: center;
-            font-size: 1.3rem;
-            background: #0088cc;
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
+            padding: 2rem 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
         }
 
-        .telegram-link:hover {
-            background: #006699;
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0,136,204,0.6);
+        .order-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff00ff, #00ff88);
+            color: #000;
+            padding: 18px 35px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 12px 35px rgba(255, 0, 255, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .order-link:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 18px 45px rgba(255, 0, 255, 0.6);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 255, 136, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
         }
 
         @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .products-list {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 0.8rem;
+            }
+            .navbar {
+                padding: 0 1rem;
+            }
             .logo {
-                font-size: 2.5rem;
-            }
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            .info-text {
-                font-size: 1rem;
-                padding: 10px 20px;
+                font-size: 1.6rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1 class="logo">MANZ OFFICIAL</h1>
-            <p class="tagline">🏆 Premium Tools & Services Terbaik 🏆</p>
-            
-            <div class="info-text">
-                🖱️ KLIK PRODUK UNTUK LIHAT HARGA 🖱️
-            </div>
-            
-            <a href="https://t.me/manzoffcl" class="order-btn" target="_blank">
-                📲 ORDER SEKARANG - @t.me/manzoffcl
+    <header>
+        <nav class="navbar">
+            <div class="logo">MANZ OFFICIAL</div>
+            <a href="https://t.me/manzoffcl" target="_blank" class="order-btn">
+                <i class="fab fa-telegram"></i> ORDER
             </a>
-        </header>
+        </nav>
+    </header>
 
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-name">LOGO</div>
-                <div class="product-price">💎 HARGA: 2K 💎</div>
-                <div class="product-desc">Logo premium berkualitas tinggi</div>
+    <div class="container">
+        <div class="hero">
+            <h1>MANZ OFFICIAL</h1>
+            <p>LIST PRODUK & HARGA TERLENGKAP • SERVICE CEPAT</p>
+        </div>
+
+        <div class="products-list">
+            <div class="product-item">
+                <div class="product-name">LOGO JB</div>
+                <div class="product-price">Rp 3K</div>
             </div>
 
-            <div class="product-card">
+            <div class="product-item">
                 <div class="product-name">FILE PLP</div>
-                <div class="product-price">💎 HARGA: 5K 💎</div>
-                <div class="product-desc">File PLP original dan berkualitas</div>
+                <div class="product-price">Rp 5-10K</div>
             </div>
 
-            <div class="product-card">
-                <div class="product-name">JASTEB</div>
-                <div class="product-price">💎 HARGA: 1K | 2K=40 | 3K=60 | 4K=80 | 5K=100 & SETERUSNYA 💎</div>
-                <div class="product-desc">Jasteb premium lengkap semua ukuran</div>
+            <div class="product-item">
+                <div class="product-name">JASTEB GACOR 5K</div>
+                <div class="product-price">100 RESS</div>
             </div>
 
-            <div class="product-card">
-                <div class="product-name">NOKOS INDONESIA</div>
-                <div class="product-price">💎 HARGA: 7K 💎</div>
-                <div class="product-desc">Nokos Indonesia lengkap dan update</div>
+            <div class="product-item">
+                <div class="product-name">JASTEB GACOR 10K</div>
+                <div class="product-price">200 RESS</div>
             </div>
 
-            <div class="product-card">
-                <div class="product-name">PT JASTEB</div>
-                <div class="product-price">💎 HARGA: 15K 💎</div>
-                <div class="product-desc">PT Jasteb premium professional</div>
+            <div class="product-item">
+                <div class="product-name">JASTEB GACOR 15K</div>
+                <div class="product-price">300 RESS</div>
             </div>
 
-            <div class="product-card">
-                <div class="product-name">RESELLER PANEL JASTEB</div>
-                <div class="product-price">💎 HARGA: 20K 💎</div>
-                <div class="product-desc">Panel reseller Jasteb official</div>
+            <div class="product-item">
+                <div class="product-name">JASTEB GACOR 20K</div>
+                <div class="product-price">400 RESS</div>
             </div>
 
-            <div class="product-card">
-                <div class="product-name">TEAM JASTEB</div>
-                <div class="product-price">💎 HARGA: 25K 💎</div>
-                <div class="product-desc">Team Jasteb untuk tim profesional</div>
+            <div class="product-item">
+                <div class="product-name">JASTEB GACOR 25K</div>
+                <div class="product-price">500 RESS</div>
             </div>
 
-            <div class="product-card">
+            <div class="product-item">
+                <div class="product-name">JASTEB GACOR 30K</div>
+                <div class="product-price">FULL TEBAR 1 MINGGU</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">MURLOG</div>
+                <div class="product-price">Rp 10K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">MURSUN</div>
+                <div class="product-price">Rp 5K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">MURPP</div>
+                <div class="product-price">Rp 3K</div>
+            </div>
+
+            <div class="product-item">
                 <div class="product-name">MARGA JASTEB</div>
-                <div class="product-price">💎 HARGA: 40K 💎</div>
-                <div class="product-desc">Marga Jasteb eksklusif sultan</div>
+                <div class="product-price">Rp 40K</div>
             </div>
 
-            <div class="product-card">
-                <div class="product-name">APK BUG MAJA V3.1</div>
-                <div class="product-price">💎 1-8H: 1-8K | 1 BULAN: 15K | PERMANEN: 20K 💎</div>
-                <div class="product-desc">APK Bug Maja V3.1 terbaru & stabil</div>
+            <div class="product-item">
+                <div class="product-name">TEAM JASTEB</div>
+                <div class="product-price">Rp 25K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">RESELLER PANEL JASTEB</div>
+                <div class="product-price">Rp 20K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">PT JASTEB</div>
+                <div class="product-price">Rp 15K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">OWN MARGA</div>
+                <div class="product-price">Rp 45K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">OWN TEAM JASTEB</div>
+                <div class="product-price">Rp 27K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">OWN RESELLER PANEL JASTEB</div>
+                <div class="product-price">Rp 23K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">OWN PT JASTEB</div>
+                <div class="product-price">Rp 17K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">APK BUG MAJA 1-8H</div>
+                <div class="product-price">Rp 1-8K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">APK BUG MAJA 1 BULAN</div>
+                <div class="product-price">Rp 15K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">APK BUG MAJA PERMANEN</div>
+                <div class="product-price">Rp 20K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">JASBUG</div>
+                <div class="product-price">Rp 4K / NOMOR</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">PP GB 3K</div>
+                <div class="product-price">9 MEMBER</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">PP GB 5K</div>
+                <div class="product-price">15 MEMBER</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">JASA MC FEE 1-20K</div>
+                <div class="product-price">Rp 1K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">JASA MC FEE 21-50K</div>
+                <div class="product-price">Rp 2K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">STOK AKUN IG</div>
+                <div class="product-price">Rp 0-100K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">OPEN MABAR ML BIASA</div>
+                <div class="product-price">Rp 3K / MATCH</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">OPEN MABAR ML VIP</div>
+                <div class="product-price">Rp 5K / MATCH</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">NOKOS INDONESIA</div>
+                <div class="product-price">Rp 7K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">PANEL JASTEB PRIBADI</div>
+                <div class="product-price">Rp 10K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">FILE WA BADAK + TUTOR</div>
+                <div class="product-price">Rp 30K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">FILE WA BADAK NO TUTOR</div>
+                <div class="product-price">Rp 20K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">JB ALL GAME</div>
+                <div class="product-price">MENYESUAIKAN</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">APK BIOSKOP</div>
+                <div class="product-price">Rp 5K</div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-name">AKSES CPANEL JASTEB</div>
+                <div class="product-price">MENYESUAIKAN</div>
             </div>
         </div>
 
-        <a href="https://t.me/manzoffcl" class="telegram-link" target="_blank">
-            🚀 UNTUK ORDER CHAT TELEGRAM @t.me/manzoffcl 🚀
-        </a>
+        <div class="footer">
+            <div style="margin-bottom: 1rem; font-size: 1.2rem; font-weight: 600;">
+                JIKA INGIN ORDER KLIK 
+            </div>
+            <a href="https://t.me/manzoffcl" target="_blank" class="order-link">
+                <i class="fab fa-telegram"></i> t.me/manzoffcl
+            </a>
+        </div>
     </div>
+
+    <script>
+        // Buat efek bintang
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = star.style.height = (Math.random() * 3 + 1) + 'px';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
 </body>
 </html>
