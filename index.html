@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANZ OFFICIAL - List Produk & Harga</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #8B4513, #DAA520, #FFD700, #B8860B, #FF8C00);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FFD700, #FF8C00, #DAA520);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255,215,0,0.8);
+            margin-bottom: 10px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700, 0 0 40px #FFD700; }
+            to { text-shadow: 0 0 30px #FF8C00, 0 0 40px #FF8C00, 0 0 50px #FF8C00; }
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .info-text {
+            background: linear-gradient(45deg, #FFD700, #FF8C00);
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: pulse 2s infinite;
+            box-shadow: 0 5px 20px rgba(255,215,0,0.6);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .order-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(255,215,0,0.6);
+            transition: all 0.3s ease;
+        }
+
+        .order-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255,215,0,0.8);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            background: rgba(0,0,0,0.9);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .product-card:hover::before {
+            left: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            border-color: #FFD700;
+            box-shadow: 0 25px 50px rgba(255,215,0,0.4);
+            background: rgba(0,0,0,0.95);
+        }
+
+        .product-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255,215,0,0.8);
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            line-height: 1.4;
+        }
+
+        .product-card:hover .product-price {
+            opacity: 1;
+            transform: translateY(0);
+            color: #FFD700;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .product-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        .telegram-link {
+            display: block;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 1.3rem;
+            background: #0088cc;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .telegram-link:hover {
+            background: #006699;
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,136,204,0.6);
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-text {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="logo">MANZ OFFICIAL</h1>
+            <p class="tagline">🏆 Premium Tools & Services Terbaik 🏆</p>
+            
+            <div class="info-text">
+                🖱️ KLIK PRODUK UNTUK LIHAT HARGA 🖱️
+            </div>
+            
+            <a href="https://t.me/manzoffcl" class="order-btn" target="_blank">
+                📲 ORDER SEKARANG - @t.me/manzoffcl
+            </a>
+        </header>
+
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-name">LOGO</div>
+                <div class="product-price">💎 HARGA: 2K 💎</div>
+                <div class="product-desc">Logo premium berkualitas tinggi</div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">FILE PLP</div>
+                <div class="product-price">💎 HARGA: 5K 💎</div>
+                <div class="product-desc">File PLP original dan berkualitas</div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">JASTEB</div>
+                <div class="product-price">💎 HARGA: 1K | 2K=40 | 3K=60 | 4K=80 | 5K=100 & SETERUSNYA 💎</div>
+                <div class="product-desc">Jasteb premium lengkap semua ukuran</div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">NOKOS INDONESIA</div>
+                <div class="product-price">💎 HARGA: 7K 💎</div>
+                <div class="product-desc">Nokos Indonesia lengkap dan update</div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">PT JASTEB</div>
+                <div class="product-price">💎 HARGA: 15K 💎</div>
+                <div class="product-desc">PT Jasteb premium professional</div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">RESELLER PANEL JASTEB</div>
+                <div class="product-price">💎 HARGA: 20K 💎</div>
+                <div class="product-desc">Panel reseller Jasteb official</div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">TEAM JASTEB</div>
+                <div class="product-price">💎 HARGA: 25K 💎</div>
+                <div class="product-desc">Team Jasteb untuk tim profesional</div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">MARGA JASTEB</div>
+                <div class="product-price">💎 HARGA: 40K 💎</div>
+                <div class="product-desc">Marga Jasteb eksklusif sultan</div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">APK BUG MAJA V3.1</div>
+                <div class="product-price">💎 1-8H: 1-8K | 1 BULAN: 15K | PERMANEN: 20K 💎</div>
+                <div class="product-desc">APK Bug Maja V3.1 terbaru & stabil</div>
+            </div>
+        </div>
+
+        <a href="https://t.me/manzoffcl" class="telegram-link" target="_blank">
+            🚀 UNTUK ORDER CHAT TELEGRAM @t.me/manzoffcl 🚀
+        </a>
+    </div>
+</body>
+</html>
